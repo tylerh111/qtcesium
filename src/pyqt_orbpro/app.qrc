@@ -1,0 +1,20 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource>
+
+        <!-- vendored orbpro -->
+        <file>vendor/orbpro/orbpro_lighter.css</file>
+        <file>vendor/orbpro/orbpro_lighterShared.css</file>
+        <file>vendor/orbpro/orbpro_shared.css</file>
+        <file>vendor/orbpro/orbpro_widgets.css</file>
+        <file alias="vendor/orbpro/orbpro.js">vendor/orbpro/orbpro_beautified.js</file>
+
+        <!-- vendored qwebchannel -->
+        <file>vendor/qwebchannel/qwebchannel.js</file>
+
+        <!-- application -->
+        <file>app.html</file>
+        <file>app.js</file>
+
+    </qresource>
+</RCC>
