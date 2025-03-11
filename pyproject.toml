@@ -1,0 +1,178 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qtcesium"
+description = "Qt Widget for Cesium JS"
+authors = [
+    {name = "Tyler Hughes", email = "tylerxh111+git@proton.me"},
+]
+readme = "README.md"
+license = { file = "LICENSE.md" }
+requires-python = ">=3.12"
+keywords = [
+    "qtcesium",
+    "pyqt",
+    "cesium",
+]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Environment :: X11 Applications :: Qt",
+    "Framework :: Pydantic",
+    "Framework :: Pydantic :: 2",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: JavaScript",
+    "Topic :: Desktop Environment",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Multimedia :: Graphics :: Viewers",
+    "Topic :: Software Development :: User Interfaces",
+    "Typing :: Typed",
+]
+dependencies = [
+    "pyqt6>=6.8",
+    "pyqt6-webengine>=6.8",
+]
+dynamic = [
+    "version",
+]
+
+[project.optional-dependencies]
+build = [
+    "build",
+    "bumpver",
+    "setuptools>=61",
+    "setuptools-scm",
+    "towncrier",
+    "twine",
+]
+dev = [
+    "nox",
+    "setuptools-scm",
+    "qtcesium[build,docs,lint,tests]"
+]
+docs = [
+    "mike",
+    "mkdocs",
+    "mkdocs-exclude",
+    "mkdocs-material",
+    "mkdocs-material-extensions",
+    "mkdocs-minify-plugin",
+    "mkdocs-redirects",
+    "mkdocstrings",
+    "mkdocstrings-python",
+    "pygments",
+    "pymdown-extensions",
+]
+lint = [
+  "ruff",
+]
+tests = [
+  "pytest",
+  "pytest-cov",
+]
+
+[project.urls]
+source        = "https://github.com/tylerh111/qtcesium"
+issues        = "https://github.com/tylerh111/qtcesium/issues"
+changes       = "https://github.com/tylerh111/qtcesium/blob/main/CHANGES.md"
+documentation = "https://qtcesium.readthedocs.io"
+
+[tool.bumpver]
+current_version = "0.0"
+version_pattern = "MAJOR.MINOR[.PATCH][-TAG]"
+commit_message = "release version {new_version}"
+commit = true
+tag = true
+push = false
+
+[tool.bumpver.file_patterns]
+"LICENSE.md" = [
+    'Copyright (c) 2025-YYYY',
+]
+"pyproject.toml" = [
+    'current_version = "{version}"',
+    'fallback_version = "{version}"',
+]
+"src/qtcesium/__init__.py" = [
+    '__version__ = "{version}"',
+]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+ignore_errors = true
+exclude_also = [
+    "def __repr__",
+    "if self\\.debug",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__:",
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib"]
+pythonpath = "src"
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+target-version = "py38"
+
+[tool.ruff.lint]
+# see rules at https://docs.astral.sh/ruff/rules
+extend-select = ["RUF", "C90", "UP", "I", "D"]
+extend-ignore = ["D105", "D107", "F541", ]
+unfixable = ["B"]
+# isort = { known-first-party = ["qtcesium"] }
+mccabe = { max-complexity = 14 }
+pydocstyle = { convention = "google" }
+
+[tool.ruff.lint.isort]
+required-imports = ["from __future__ import annotations"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402", "F401"]
+"**/{docs,tests,tools}/*" = ["E402", "D"]
+"**/notebooks/**/*.ipynb" = ["E402"]
+"*.pyi" = ["I002"]
+"noxfile.py" = ["D"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.setuptools_scm]
+version_scheme = "no-guess-dev"
+write_to = "src/qtcesium/_version.py"
+fallback_version = "0.0"
+
+[tool.towncrier]
+version = "0.0"
+directory = "changes"
+filename = "CHANGES.md"
+start_string = "<!-- release notes -->\n"
+underlines = ["", "", ""]
+title_format = "## [{version}](https://github.com/tylerh111/qtcesium/releases/tag/{version}) - {project_date}"
+issue_format = "[{issue}](https://github.com/tylerh111/qtcesium/issues/{issues})"
+type = [
+    { name = "Features", directory = "feature", showcontent = true },
+    { name = "Changes", directory = "changes", showcontent = true },
+    { name = "Fixes", directory = "fix", showcontent = true },
+    { name = "Documentation", directory = "docs", showcontent = true },
+    { name = "Misc", directory = "misc", showcontent = false },
+]
