@@ -5,6 +5,7 @@
         <file alias="orbpro_lighterShared.css">vendor/orbpro/orbpro_lighterShared.css</file>
         <file alias="orbpro_shared.css">vendor/orbpro/orbpro_shared.css</file>
         <file alias="orbpro_widgets.css">vendor/orbpro/orbpro_widgets.css</file>
-        <file alias="orbpro.js">vendor/orbpro/orbpro.js</file>
+        <file alias="orbpro.js">vendor/orbpro/orbpro.beautified.js</file>
+        <!-- <file alias="orbpro.js">vendor/orbpro/orbpro.js</file> -->
     </qresource>
 </RCC>
