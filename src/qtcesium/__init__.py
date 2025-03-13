@@ -5,7 +5,7 @@ try:
 except ImportError:
     __version__ = "0.0"
 
-from .cesium import QCesium
+from .qcesium import QCesium
 
 __all__ = [
     "QCesium",

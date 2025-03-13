@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import importlib.resources
 from PyQt6 import (
     QtCore,
     QtWebEngineCore,
