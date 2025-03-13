@@ -1,0 +1,7 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/qtcesium">
+        <file alias="qcesium.html">qcesium.html</file>
+        <file alias="qcesium.js">qcesium.js</file>
+    </qresource>
+</RCC>

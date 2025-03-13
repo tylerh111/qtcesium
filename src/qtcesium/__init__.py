@@ -5,8 +5,9 @@ try:
 except ImportError:
     __version__ = "0.0"
 
-from .qcesium import QCesium
+from .qcesium import QCesium, QTCESIUM_RESOURCE_FILES
 
 __all__ = [
     "QCesium",
+    "QTCESIUM_RESOURCE_FILES",
 ]
