@@ -6,7 +6,6 @@
   "author": "Tyler Hughes <tylerhx111+git@proton.me>",
   "license": "MIT",
   "dependencies": {
-    "cesium": "^1.127.0",
-    "qwebchannel": "^6.2.0"
+    "cesium": "^1.127.0"
   }
 }
