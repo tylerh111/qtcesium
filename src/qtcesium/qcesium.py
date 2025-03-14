@@ -22,8 +22,7 @@ QTCESIUM_RESOURCE_FILES_COMPILED: list[Path] = [
 
 
 class QCesiumRemote(QtCore.QObject):
-
-    qcesium_run_debug = QtCore.pyqtSignal()
+    pass
 
 
 class QCesium(QtWebEngineWidgets.QWebEngineView):
