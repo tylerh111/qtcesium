@@ -56,6 +56,7 @@ class QCesium(QtWebEngineWidgets.QWebEngineView):
         for file in QTCESIUM_RESOURCE_FILES_COMPILED:
             print(f"loading '{file}'")
             QtCore.QResource.registerResource(file.with_suffix(".rcc").as_posix())
+
     def setup_page(self, page: QtCore.QUrl | str | None = None):
         if page is None:
             page = QtCore.QUrl("qrc:/qtcesium/index.html")
