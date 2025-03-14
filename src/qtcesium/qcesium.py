@@ -17,14 +17,14 @@ QTCESIUM_RESOURCE_FILES: list[Path] = [
 ]
 
 
-class QCesiumHandler(QtCore.QObject):
+class QCesiumRemote(QtCore.QObject):
 
-    cesium_add_marker = QtCore.pyqtSignal(float, float)
+    qcesium_run_debug = QtCore.pyqtSignal()
 
 
 class QCesium(QtWebEngineWidgets.QWebEngineView):
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, remote: QCesiumRemote | None = None, **kwargs):
         super().__init__(*args, **kwargs)
         settings = [
             QtWebEngineCore.QWebEngineSettings.WebAttribute.LocalContentCanAccessFileUrls,
@@ -35,12 +35,27 @@ class QCesium(QtWebEngineWidgets.QWebEngineView):
         for setting in settings:
             self.settings().setAttribute(setting, True)
 
-        self.handler = QCesiumHandler()
-
+        self.remote = QCesiumRemote() if remote is None else remote
         self.channel = QtWebChannel.QWebChannel()
-        self.channel.registerObject("handler", self.handler)
+
+        self.setup_channel()
+        self.setup_resources()
+        self.setup_page()
+
+    def setup_channel(self):
+        self.channel.registerObject("remote", self.remote)
+        self.page().setWebChannel(self.channel)
+
+    @staticmethod
+    def setup_resources():
 
         for file in QTCESIUM_RESOURCE_FILES:
-            print(QtCore.QResource().children())
             print(f"loading file {file}")
             QtCore.QResource.registerResource(file.with_suffix(".rcc").as_posix())
+    def setup_page(self, page: QtCore.QUrl | str | None = None):
+        if page is None:
+            page = QtCore.QUrl("qrc:/qtcesium/index.html")
+        elif isinstance(page, str):
+            page = QtCore.QUrl(page)
+
+        self.page().setUrl(page)

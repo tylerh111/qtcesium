@@ -1,7 +1,12 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
     <qresource prefix="/qtcesium">
-        <file alias="qcesium.html">qcesium.html</file>
-        <file alias="qcesium.js">qcesium.js</file>
+        <file alias="/index.js">resources/qtcesium/index.js</file>
+        <file alias="/index.css">resources/qtcesium/index.css</file>
+        <file alias="/index.html">resources/qtcesium/index.html</file>
+        <file alias="/qcesium_channel.js">resources/qtcesium/qcesium_channel.js</file>
+        <file alias="/qcesium_debug.js">resources/qtcesium/qcesium_debug.js</file>
+        <file alias="/qcesium_entity.js">resources/qtcesium/qcesium_entity.js</file>
+        <file alias="/qcesium_viewer.js">resources/qtcesium/qcesium_viewer.js</file>
     </qresource>
 </RCC>

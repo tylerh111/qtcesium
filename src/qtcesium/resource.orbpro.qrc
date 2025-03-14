@@ -1,11 +1,8 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
-    <qresource prefix="/qtcesium/vendor/orbpro">
-        <file alias="orbpro_lighter.css">vendor/orbpro/orbpro_lighter.css</file>
-        <file alias="orbpro_lighterShared.css">vendor/orbpro/orbpro_lighterShared.css</file>
-        <file alias="orbpro_shared.css">vendor/orbpro/orbpro_shared.css</file>
-        <file alias="orbpro_widgets.css">vendor/orbpro/orbpro_widgets.css</file>
-        <file alias="orbpro.js">vendor/orbpro/orbpro.beautified.js</file>
-        <!-- <file alias="orbpro.js">vendor/orbpro/orbpro.js</file> -->
+    <qresource prefix="/orbpro">
+        <file alias="/style/widgets.css">../../node_modules/orbpro/style/widgets.css</file>
+        <file alias="/dist/OrbPro.js">../../node_modules/orbpro/dist/OrbPro.js</file>
+        <file alias="/dist/index.js">../../node_modules/orbpro/dist/index.js</file>
     </qresource>
 </RCC>

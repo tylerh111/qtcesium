@@ -2,9 +2,36 @@
   "name": "qtcesium",
   "version": "0.0.0",
   "description": "Qt Widget for Cesium JS",
-  "repository": "https://github.com/tylerh111/qtcesium.git",
-  "author": "Tyler Hughes <tylerhx111+git@proton.me>",
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Tyler Hughes",
+      "email": "tylerhx111+git@proton.me",
+      "url": "https://github.com/tylerh111"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tylerh111/qtcesium.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DigitalArsenal/OrbProJS/issues"
+  },
+  "keywords": [
+    "3D",
+    "webgl",
+    "geospatial",
+    "map",
+    "globe",
+    "satellite",
+    "orbit",
+    "sgp4",
+    "space"
+  ],
+  "main": "qtcesium/resource/qtcesium/index.js",
+  "module": "qtcesium/resource/qtcesium/index.js",
+  "type": "module",
+  "types": "qtcesium/resource/qtcesium/qcesium.d.js",
   "dependencies": {
     "orbpro": "^1.126.0"
   }

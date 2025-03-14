@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import inspect
 import os
 import signal
 import subprocess
@@ -16,19 +17,31 @@ from .qcesium import (
     QTCESIUM_RESOURCE_FILES,
 )
 
+class _DemoDebugger(QtWidgets.QDialog):
 
-class _MainWindow(QtWidgets.QMainWindow):
+    def __init__(self, ui: "_Demo", *args, **kwargs):
+        super().__init__(parent=ui, *args, **kwargs)
+
+        QtCore.qDebug("starting demo-debugger")
+
+        self.ui = ui
+        self._layout = QtWidgets.QVBoxLayout()
+
+        self.setWindowTitle("DEMO DEBUGGER")
+        self.setMinimumSize(250, 100)
+        self.setLayout(self._layout)
+
+    def _debug_message(self, msg: str = ""):
+        QtCore.qDebug(f"::DEBUGGER:: <{inspect.stack()[1][3]}> {msg}")
+
+
+class _Demo(QtWidgets.QMainWindow):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.cesium = QCesium()
-        self.setContentsMargins(0, 0, 0, 0)
         self.setCentralWidget(self.cesium)
-        # self.centralWidget().setContentsMargins(0, 0, 0, 0)
-
-        self.cesium.page().setUrl(QtCore.QUrl("qrc:/qtcesium/qcesium.html"))
-        self.cesium.page().setWebChannel(self.cesium.channel)
 
 
 def _setup_environment():
@@ -47,6 +60,7 @@ def _compile_resource_files(
     for file in files:
         file_compiled = file.with_suffix(".rcc")
         if force or not file_compiled.exists():
+            print(f"compiling '{file}'")
             subprocess.run([
                 "rcc",
                 "--binary",
@@ -63,6 +77,10 @@ def demo():
     app = QtWidgets.QApplication(sys.argv)
     app.setApplicationName("DEMO")
 
-    ui = _MainWindow()
+    ui = _Demo()
     ui.show()
+
+    db = _DemoDebugger(ui)
+    db.show()
+
     return app.exec()
