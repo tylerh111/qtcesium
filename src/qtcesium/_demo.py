@@ -35,12 +35,16 @@ class _DemoDebugger(QtWidgets.QDialog):
         QtCore.qDebug(f"::DEBUGGER:: <{inspect.stack()[1][3]}> {msg}")
 
 
+class _DemoCesiumRemote(QCesiumRemote):
+    """Custom cesium remote for demo"""
+
+
 class _Demo(QtWidgets.QMainWindow):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.cesium = QCesium()
+        self.cesium = QCesium(remote=_DemoCesiumRemote())
         self.setCentralWidget(self.cesium)
 
 
