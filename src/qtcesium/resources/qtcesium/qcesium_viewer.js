@@ -9,7 +9,7 @@ import * as Cesium from "orbpro";
  */
 export function create_cesium_viewer(container) {
     const viewer = new Cesium.Viewer(container, {
-        navigationHelpButton: false,
+        navigationInstructionsInitiallyVisible: false,
         creditContainer: document.createElement("none"),
     });
 
