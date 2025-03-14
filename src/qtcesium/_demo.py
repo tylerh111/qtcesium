@@ -14,6 +14,7 @@ from PyQt6 import (
 
 from .qcesium import (
     QCesium,
+    QCesiumRemote,
     QTCESIUM_RESOURCE_FILES,
 )
 
