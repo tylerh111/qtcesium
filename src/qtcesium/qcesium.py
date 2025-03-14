@@ -10,10 +10,14 @@ from PyQt6 import (
     QtWebChannel,
 )
 
+_ROOT = importlib.resources.files("qtcesium")
 
 QTCESIUM_RESOURCE_FILES: list[Path] = [
-    importlib.resources.files("qtcesium") / "resource.qcesium.qrc",
-    importlib.resources.files("qtcesium") / "resource.orbpro.qrc",
+    _ROOT / "resource.qcesium.qrc",
+    _ROOT / "resource.orbpro.qrc",
+]
+QTCESIUM_RESOURCE_FILES_COMPILED: list[Path] = [
+    file.with_suffix(".rcc") for file in QTCESIUM_RESOURCE_FILES
 ]
 
 
@@ -49,8 +53,8 @@ class QCesium(QtWebEngineWidgets.QWebEngineView):
     @staticmethod
     def setup_resources():
 
-        for file in QTCESIUM_RESOURCE_FILES:
-            print(f"loading file {file}")
+        for file in QTCESIUM_RESOURCE_FILES_COMPILED:
+            print(f"loading '{file}'")
             QtCore.QResource.registerResource(file.with_suffix(".rcc").as_posix())
     def setup_page(self, page: QtCore.QUrl | str | None = None):
         if page is None:
