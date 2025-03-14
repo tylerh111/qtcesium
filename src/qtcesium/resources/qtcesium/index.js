@@ -11,6 +11,19 @@ export {
     qcesium_viewer,
 }
 
+/**
+ * Connect channel signal to slot.
+ *
+ * @param {string} obj Channel object that is connected to the Qt application.
+ * @param {(object, ...: any[]) => any} fn Function to connect.
+ * @param {object} opts Additional function options.
+ */
+function _connect(obj, fn, opts={}) {
+    obj[fn.name].connect((...args) => {
+        fn.apply(null, [opts].concat(args));
+    });
+}
+
 
 /**
  * Initialize QCesium application.
