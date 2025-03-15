@@ -1,5 +1,5 @@
 
-import * as QCesium from "@/qtcesium";
+import * as qtcesium from "@/qtcesium";
 
 /**
  * Connect remote signal to slot.
@@ -20,15 +20,15 @@ function _connect(obj, fn, opts={}) {
  * @param {string} container Container where the cesium viewer is to be displayed.
  */
 export function initialize(container) {
-    QCesium.initialize_cesium_viewer(container, (viewer) => {
+    qtcesium.initialize_cesium_viewer(container, (viewer) => {
         globalThis.app_viewer = viewer;
     });
 
-    QCesium.initialize_qwebchannel((channel) => {
+    qtcesium.initialize_qwebchannel((channel) => {
         globalThis.app_channel = channel;
         globalThis.app_remote = channel.objects.remote;
 
-        _connect(channel.objects.remote, QCesium.qcesium_create_entity, {viewer: globalThis.app_viewer});
-        _connect(channel.objects.remote, QCesium.qcesium_create_entity_fixed_geographic_coordinates, {viewer: globalThis.app_viewer});
+        _connect(channel.objects.remote, qtcesium.qcesium_create_entity, {viewer: globalThis.app_viewer});
+        _connect(channel.objects.remote, qtcesium.qcesium_create_entity_fixed_geographic_coordinates, {viewer: globalThis.app_viewer});
     });
 }
