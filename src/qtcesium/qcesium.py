@@ -43,6 +43,7 @@ class QCesiumRemote(QtCore.QObject):
     """Signal javascript to create a fixed geographic coordinate entity.
 
     Args:
+        id (str): Identifier for entity.
         lat (float): Latitude of geographic coordinate.
         lon (float): Longitude of geographic coordinate.
         alt (float): Altitude of geographic coordinate. Defaults to `0.0`.

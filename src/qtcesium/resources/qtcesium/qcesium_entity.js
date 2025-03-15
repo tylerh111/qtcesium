@@ -33,6 +33,7 @@ export function qcesium_create_entity(
  */
 export function qcesium_create_entity_fixed_geographic_coordinates(
     {
+        id,
         lat,
         lon,
         alt = 0,
@@ -47,6 +48,8 @@ export function qcesium_create_entity_fixed_geographic_coordinates(
     if (viewer == null) { throw new Error("`viewer` undefined or null"); }
 
     viewer.entities.add({
+        id: id,
+        name: label,
         show: true,
         position: Cesium.Cartesian3.fromDegrees(lon, lat, alt),
         point: {
