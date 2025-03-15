@@ -36,6 +36,16 @@ class QCesiumRemote(QtCore.QObject):
         ** (dict): See `Cesium.Entity.ConstructorOptions`.
     """
 
+    qcesium_create_entity_fixed_geographic_coordinates = QtCore.Signal(dict)
+    """Signal javascript to create a fixed geographic coordinate entity.
+
+    Args:
+        lat (float): Latitude of geographic coordinate.
+        lon (float): Longitude of geographic coordinate.
+        alt (float): Altitude of geographic coordinate. Defaults to `0.0`.
+        label (str): Label for geographic coordinate. Defaults to `None`.
+    """
+
 
 class QCesium(QtWebEngineWidgets.QWebEngineView):
     """A Qt widget for Cesium.
