@@ -8,7 +8,7 @@ import * as Cesium from "orbpro";
  * @param {object} opts Function options.
  * @param {Cesium.Viewer} opts.viewer Cesium viewer.
  */
-export function qcesium_create_cesium_entity(
+export function qcesium_create_entity(
     entity,
     {
         viewer,

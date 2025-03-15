@@ -29,7 +29,7 @@ class QCesiumRemote(QtCore.QObject):
     The argument a JSON serializable dictionary.
     """
 
-    qcesium_create_cesium_entity = QtCore.Signal(dict)
+    qcesium_create_entity = QtCore.Signal(dict)
     """Signal javascript to create an entity.
 
     Args:
