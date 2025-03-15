@@ -36,7 +36,7 @@ export function qcesium_create_entity_fixed_geographic_coordinates(
         lat,
         lon,
         alt = 0,
-        label = "",
+        label = null,
     }={},
     {
         viewer,
