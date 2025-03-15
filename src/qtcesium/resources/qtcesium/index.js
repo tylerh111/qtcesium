@@ -12,15 +12,15 @@ export {
 }
 
 /**
- * Connect channel signal to slot.
+ * Connect remote signal to slot.
  *
- * @param {string} obj Channel object that is connected to the Qt application.
- * @param {(object, ...: any[]) => any} fn Function to connect.
- * @param {object} opts Additional function options.
+ * @param {object} obj Channel object that is connected to the Qt application.
+ * @param {(object, object) => any} fn Function to connect that takes `args` object followed by `opts` object.
+ * @param {object} opts Function options.
  */
 function _connect(obj, fn, opts={}) {
-    obj[fn.name].connect((...args) => {
-        fn.apply(null, [opts].concat(args));
+    obj[fn.name].connect((args) => {
+        fn(args, opts);
     });
 }
 
