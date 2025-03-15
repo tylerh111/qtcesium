@@ -3,4 +3,4 @@
 /**
  * QCesium debug hook.
  */
-export function qcesium_run_debug({}={}, {}={}) {}
+export function qcesium_debug({}={}, {}={}) {}
