@@ -49,6 +49,15 @@ class QCesiumRemote(QtCore.QObject):
         label (str): Label for geographic coordinate. Defaults to `None`.
     """
 
+    qcesium_create_entity_satellite = QtCore.Signal(dict)
+    """Signal javascript to create a satellite entity.
+
+    Args:
+        id (str): Identifier for entity.
+        omm (float): Obital information for satellite in Orbital Mean-Element Message (OMM) format.
+        label (str): Label for satellite entity. Defaults to `None`.
+    """
+
 
 class QCesium(QtWebEngineWidgets.QWebEngineView):
     """A Qt widget for Cesium.

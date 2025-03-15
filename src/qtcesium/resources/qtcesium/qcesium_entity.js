@@ -63,3 +63,42 @@ export function qcesium_create_entity_fixed_geographic_coordinates(
         }
     });
 }
+
+export async function qcesium_create_entity_satellite (
+    {
+        id,
+        omm,
+        label = null,
+    }={},
+    {
+        viewer,
+    }={},
+) {
+    if (id == null) { throw new Error("`id` undefined or null"); }
+    if (omm == null) { throw new Error("`omm` undefined or null"); }
+
+    const entity = new Cesium.SpaceEntity({
+        id: id,
+        name: label,
+        show: true,
+        point: {
+            pixelSize: 10,
+            color: Cesium.Color.WHITE,
+        },
+        label: {
+            show: Boolean(label),
+            text: label,
+            scale: 0.5,
+            showBackground: true,
+            horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
+            pixelOffset: { x: 10, y: 0 },
+        },
+    });
+
+    await entity.position.loadOMM(omm);
+    entity.showOrbit({ show: true });
+    entity.showCoverage({ show: true });
+
+    viewer.entities.add(entity);
+    viewer.trackedEntity = entity;
+}
