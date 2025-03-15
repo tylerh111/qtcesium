@@ -29,11 +29,44 @@ class _DemoDebugger(QtWidgets.QDialog):
         self._layout = QtWidgets.QVBoxLayout()
 
         self.setWindowTitle("DEMO DEBUGGER")
+        self.setGeometry(2560, 0, 250, 100)
         self.setMinimumSize(250, 100)
         self.setLayout(self._layout)
 
+        self._button_test = QtWidgets.QPushButton("test")
+        self._button_test.clicked.connect(self._on_test)
+        self._layout.addWidget(self._button_test)
+
+        self._button_entity = QtWidgets.QPushButton("entity")
+        self._button_entity.clicked.connect(self._on_entity)
+        self._layout.addWidget(self._button_entity)
+
     def _debug_message(self, msg: str = ""):
         QtCore.qDebug(f"::DEBUGGER:: <{inspect.stack()[1][3]}> {msg}")
+
+    def _on_test(self, _):
+        self._debug_message()
+        print(type(self.ui.cesium.remote.qcesium_run_debug))
+        print(dir(self.ui.cesium.remote.qcesium_run_debug))
+        self.ui.cesium.remote.qcesium_run_debug.emit({"id":"test"})
+        self._debug_message("(done)")
+
+    def _on_entity(self, _):
+        self.p = getattr(self, "p", 0)
+        self.p += 1
+        self._debug_message()
+        self.ui.cesium.remote.qcesium_create_entity_fixed_geographic_coordinates.emit({
+            "id": "hello",
+            "lat": 0,
+            "lon": 0,
+        })
+        self.ui.cesium.remote.qcesium_create_entity_fixed_geographic_coordinates.emit({
+            "id": "test",
+            "lat": 40.812305,
+            "lon": -77.856176,
+            "label": "state college",
+        })
+        self._debug_message("(done)")
 
 
 class _DemoCesiumRemote(QCesiumRemote):
@@ -54,7 +87,7 @@ def _setup_environment():
 
     os.environ["QTWEBENGINE_DICTIONARIES_PATH"] = "/usr/share/hunspell"
     os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = "--ignore-gpu-blocklist"
-    os.environ["QTWEBENGINE_REMOTE_DEBUGGING"] = "5544"
+    # os.environ["QTWEBENGINE_REMOTE_DEBUGGING"] = "5544"
 
 
 def _compile_resource_files(
