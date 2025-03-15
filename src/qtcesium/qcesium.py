@@ -27,8 +27,13 @@ class QCesiumRemote(QtCore.QObject):
 
 class QCesium(QtWebEngineWidgets.QWebEngineView):
 
-    def __init__(self, *args, remote: QCesiumRemote | None = None, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(
+        self,
+        page: QtCore.QUrl | None = None,
+        remote: QCesiumRemote | None = None,
+        **kwargs,
+    ):
+        super().__init__(**kwargs)
         settings = [
             QtWebEngineCore.QWebEngineSettings.WebAttribute.LocalContentCanAccessFileUrls,
             QtWebEngineCore.QWebEngineSettings.WebAttribute.LocalContentCanAccessRemoteUrls,
@@ -38,14 +43,20 @@ class QCesium(QtWebEngineWidgets.QWebEngineView):
         for setting in settings:
             self.settings().setAttribute(setting, True)
 
-        self.remote = QCesiumRemote() if remote is None else remote
+        self.remote = None
         self.channel = QtWebChannel.QWebChannel()
 
-        self.setup_channel()
         self.setup_resources()
-        self.setup_page()
+        self.setup_channel(remote)
+        self.setup_page(page)
 
-    def setup_channel(self):
+    def setup_channel(self, remote: QCesiumRemote | None = None):
+        if remote is None:
+            remote = QCesiumRemote()
+        else:
+            remote = remote
+
+        self.remote = remote
         self.channel.registerObject("remote", self.remote)
         self.page().setWebChannel(self.channel)
 
