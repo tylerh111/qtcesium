@@ -38,5 +38,8 @@ export function initialize(container) {
     qcesium_channel.initialize_qwebchannel((channel) => {
         globalThis.app_channel = channel;
         globalThis.app_remote = channel.objects.remote;
+
+        _connect(channel.objects.remote, qcesium_entity.qcesium_create_cesium_entity, {viewer: globalThis.app_viewer});
+
     });
 }
