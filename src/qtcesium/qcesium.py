@@ -3,7 +3,7 @@ from __future__ import annotations
 import importlib.resources
 from pathlib import Path
 
-from PyQt6 import (
+from PySide6 import (
     QtCore,
     QtWebEngineCore,
     QtWebEngineWidgets,

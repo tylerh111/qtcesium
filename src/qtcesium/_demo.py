@@ -7,7 +7,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from PyQt6 import (
+from PySide6 import (
     QtCore,
     QtWidgets,
 )

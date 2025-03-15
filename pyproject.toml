@@ -13,7 +13,7 @@ license = { file = "LICENSE.md" }
 requires-python = ">=3.12"
 keywords = [
     "qtcesium",
-    "pyqt",
+    "pyside",
     "cesium",
 ]
 classifiers = [
@@ -42,8 +42,7 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "pyqt6>=6.8",
-    "pyqt6-webengine>=6.8",
+    "pyside6>=6.0",
 ]
 dynamic = [
     "version",
