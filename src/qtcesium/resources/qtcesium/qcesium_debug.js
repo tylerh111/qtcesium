@@ -22,6 +22,11 @@ export async function qcesium_run_debug (
             pixelSize: 10,
             color: Cesium.Color.WHITE,
         },
+        path: {
+            show: false,
+            leadTime: 100,
+            trailTime: 100,
+        },
         label: {
             show: Boolean(id),
             text: id,
@@ -31,7 +36,6 @@ export async function qcesium_run_debug (
             pixelOffset: { x: 10, y: 0 },
         },
     });
-
 
     console.error("::DEBUG:: here0");
     await entity.position.loadOMM({
@@ -93,17 +97,18 @@ export async function qcesium_run_debug (
 
     // await entity.position.loadOMM(omm);
 
-    // viewer.entities.add(entity);
-    // console.error("::DEBUG:: here2");
+    viewer.entities.add(entity);
+    console.error("::DEBUG:: here2");
 
-    const issDataSource = new Cesium.SpaceCatalogDataSource({ name: "issSource" });
-    issDataSource.entities.add(entity);
-    viewer.dataSources.add(issDataSource);
+    // const issDataSource = new Cesium.SpaceCatalogDataSource({ name: "issSource" });
+    // issDataSource.entities.add(entity);
+    // viewer.dataSources.add(issDataSource);
 
     // viewer.trackedEntity = entity;
     // console.error("::DEBUG:: here3");
 
-    entity.showOrbit({ show: true });
+    // entity.path.leadTime =
+    entity.showOrbit({ show: true, leadTime: 100, trailTime: 100 });
     console.error("::DEBUG:: here4");
     entity.showCoverage({ show: true });
     console.error("::DEBUG:: here5");

@@ -48,7 +48,7 @@ class _DemoDebugger(QtWidgets.QDialog):
         self._debug_message()
         print(type(self.ui.cesium.remote.qcesium_run_debug))
         print(dir(self.ui.cesium.remote.qcesium_run_debug))
-        self.ui.cesium.remote.qcesium_run_debug.emit({"id":"test"})
+        self.ui.cesium.remote.qcesium_run_debug.emit({"id":"what"})
         self._debug_message("(done)")
 
     def _on_entity(self, _):
@@ -106,6 +106,7 @@ def _compile_resource_files(
                 "--output",
                 file_compiled,
             ])
+            print(f"compiling '{file}' (done)")
 
 
 def demo():
