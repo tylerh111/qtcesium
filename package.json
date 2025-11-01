@@ -15,7 +15,7 @@
     "url": "https://github.com/tylerh111/qtcesium.git"
   },
   "bugs": {
-    "url": "https://github.com/DigitalArsenal/OrbProJS/issues"
+    "url": "https://github.com/tylerh111/qtcesium/issues"
   },
   "keywords": [
     "3D",
@@ -33,6 +33,6 @@
   "type": "module",
   "types": "qtcesium/resource/qtcesium/qcesium.d.js",
   "dependencies": {
-    "orbpro": "^1.126.0"
+    "cesium": "^1.134.1"
   }
 }

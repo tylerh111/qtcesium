@@ -1,8 +1,0 @@
-<!DOCTYPE RCC>
-<RCC version="1.0">
-    <qresource prefix="/orbpro">
-        <file alias="/style/widgets.css">../../node_modules/orbpro/style/widgets.css</file>
-        <file alias="/dist/OrbPro.js">../../node_modules/orbpro/dist/OrbPro.js</file>
-        <file alias="/dist/index.js">../../node_modules/orbpro/dist/index.js</file>
-    </qresource>
-</RCC>

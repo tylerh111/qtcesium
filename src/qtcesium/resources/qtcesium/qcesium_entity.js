@@ -1,5 +1,5 @@
 
-import * as Cesium from "orbpro";
+import * as Cesium from "cesium";
 
 /**
  * Create a cesium entity in the viewer.
@@ -20,88 +20,88 @@ export function qcesium_create_entity(
     viewer.entities.add(entity);
 }
 
-/**
- * Create a point entity via geographic coordinates in the viewer.
- *
- * @param {object} args Function options.
- * @param {number} args.lat Latitude of geographic coordinate.
- * @param {number} args.lon Longitude of geographic coordinate.
- * @param {number} args.alt Altitude of geographic coordinate.
- * @param {string} args.label Label for geographic coordinate.
- * @param {object} opts Function configurations.
- * @param {Cesium.Viewer} opts.viewer Cesium viewer.
- */
-export function qcesium_create_entity_fixed_geographic_coordinates(
-    {
-        id,
-        lat,
-        lon,
-        alt = 0,
-        label = null,
-    }={},
-    {
-        viewer,
-    }={},
-) {
-    if (lat == null) { throw new Error("`lat` undefined or null"); }
-    if (lon == null) { throw new Error("`lon` undefined or null"); }
-    if (viewer == null) { throw new Error("`viewer` undefined or null"); }
+// /**
+//  * Create a point entity via geographic coordinates in the viewer.
+//  *
+//  * @param {object} args Function options.
+//  * @param {number} args.lat Latitude of geographic coordinate.
+//  * @param {number} args.lon Longitude of geographic coordinate.
+//  * @param {number} args.alt Altitude of geographic coordinate.
+//  * @param {string} args.label Label for geographic coordinate.
+//  * @param {object} opts Function configurations.
+//  * @param {Cesium.Viewer} opts.viewer Cesium viewer.
+//  */
+// export function qcesium_create_entity_fixed_geographic_coordinates(
+//     {
+//         id,
+//         lat,
+//         lon,
+//         alt = 0,
+//         label = null,
+//     }={},
+//     {
+//         viewer,
+//     }={},
+// ) {
+//     if (lat == null) { throw new Error("`lat` undefined or null"); }
+//     if (lon == null) { throw new Error("`lon` undefined or null"); }
+//     if (viewer == null) { throw new Error("`viewer` undefined or null"); }
 
-    viewer.entities.add({
-        id: id,
-        name: label,
-        show: true,
-        position: Cesium.Cartesian3.fromDegrees(lon, lat, alt),
-        point: {
-            pixelSize: 10,
-            color: Cesium.Color.WHITE,
-        },
-        label: {
-            show: Boolean(label),
-            text: label,
-            scale: 0.5,
-            showBackground: true,
-            horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
-            pixelOffset: { x: 10, y: 0 },
-        }
-    });
-}
+//     viewer.entities.add({
+//         id: id,
+//         name: label,
+//         show: true,
+//         position: Cesium.Cartesian3.fromDegrees(lon, lat, alt),
+//         point: {
+//             pixelSize: 10,
+//             color: Cesium.Color.WHITE,
+//         },
+//         label: {
+//             show: Boolean(label),
+//             text: label,
+//             scale: 0.5,
+//             showBackground: true,
+//             horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
+//             pixelOffset: { x: 10, y: 0 },
+//         }
+//     });
+// }
 
-export async function qcesium_create_entity_satellite (
-    {
-        id,
-        omm,
-        label = null,
-    }={},
-    {
-        viewer,
-    }={},
-) {
-    if (id == null) { throw new Error("`id` undefined or null"); }
-    if (omm == null) { throw new Error("`omm` undefined or null"); }
+// export async function qcesium_create_entity_satellite (
+//     {
+//         id,
+//         omm,
+//         label = null,
+//     }={},
+//     {
+//         viewer,
+//     }={},
+// ) {
+//     if (id == null) { throw new Error("`id` undefined or null"); }
+//     if (omm == null) { throw new Error("`omm` undefined or null"); }
 
-    const entity = new Cesium.SpaceEntity({
-        id: id,
-        name: label,
-        show: true,
-        point: {
-            pixelSize: 10,
-            color: Cesium.Color.WHITE,
-        },
-        label: {
-            show: Boolean(label),
-            text: label,
-            scale: 0.5,
-            showBackground: true,
-            horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
-            pixelOffset: { x: 10, y: 0 },
-        },
-    });
+//     const entity = new Cesium.SpaceEntity({
+//         id: id,
+//         name: label,
+//         show: true,
+//         point: {
+//             pixelSize: 10,
+//             color: Cesium.Color.WHITE,
+//         },
+//         label: {
+//             show: Boolean(label),
+//             text: label,
+//             scale: 0.5,
+//             showBackground: true,
+//             horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
+//             pixelOffset: { x: 10, y: 0 },
+//         },
+//     });
 
-    await entity.position.loadOMM(omm);
-    entity.showOrbit({ show: true });
-    entity.showCoverage({ show: true });
+//     await entity.position.loadOMM(omm);
+//     entity.showOrbit({ show: true });
+//     entity.showCoverage({ show: true });
 
-    viewer.entities.add(entity);
-    viewer.trackedEntity = entity;
-}
+//     viewer.entities.add(entity);
+//     viewer.trackedEntity = entity;
+// }

@@ -14,7 +14,7 @@ _ROOT = importlib.resources.files("qtcesium")
 
 QTCESIUM_RESOURCE_FILES: list[Path] = [
     _ROOT / "resource.qcesium.qrc",
-    _ROOT / "resource.orbpro.qrc",
+    _ROOT / "resource.cesium.qrc",
 ]
 QTCESIUM_RESOURCE_FILES_COMPILED: list[Path] = [
     file.with_suffix(".rcc") for file in QTCESIUM_RESOURCE_FILES

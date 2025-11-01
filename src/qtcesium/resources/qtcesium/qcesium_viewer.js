@@ -1,5 +1,5 @@
 
-import * as Cesium from "orbpro";
+import * as Cesium from "cesium";
 
 /**
  * Create a cesium viewer object.
