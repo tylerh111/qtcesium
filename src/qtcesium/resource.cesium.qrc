@@ -1,8 +1,8 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
     <qresource prefix="/Cesium">
-        <file alias="/Widgets/widgets.css">../../node_modules/cesium/Build/Cesium/Widgets/widgets.css</file>
         <file alias="/Cesium.js">../../node_modules/cesium/Build/Cesium/Cesium.js</file>
         <file alias="/index.js">../../node_modules/cesium/Build/Cesium/index.js</file>
+        <file alias="/Widgets/widgets.css">../../node_modules/cesium/Build/Cesium/Widgets/widgets.css</file>
     </qresource>
 </RCC>
