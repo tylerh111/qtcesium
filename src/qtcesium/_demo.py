@@ -100,7 +100,7 @@ def _compile_resource_files(
         if force or not file_compiled.exists():
             print(f"compiling '{file}'")
             subprocess.run([
-                "rcc",
+                "pyside6-rcc",
                 "--binary",
                 file,
                 "--output",
