@@ -43,6 +43,7 @@ classifiers = [
 ]
 dependencies = [
     "pyside6>=6.0",
+    "czml3>=3.0",
 ]
 dynamic = [
     "version",
