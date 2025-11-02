@@ -29,6 +29,7 @@ export function create_cesium_viewer(container) {
  * @param {(Cesium.Viewer) => void} callback Callback after the viewer is created.
  */
 export function initialize_cesium_viewer(container, callback) {
+    window.CESIUM_BASE_URL = "qrc:///Cesium";
     const viewer = create_cesium_viewer(container);
     callback(viewer);
 }
