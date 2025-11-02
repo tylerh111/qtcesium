@@ -29,8 +29,5 @@ export function initialize(container) {
         globalThis.app_remote = channel.objects.remote;
 
         _connect(channel.objects.remote, qtcesium.qcesium_run_debug, {viewer: globalThis.app_viewer});
-        _connect(channel.objects.remote, qtcesium.qcesium_create_entity, {viewer: globalThis.app_viewer});
-        // _connect(channel.objects.remote, qtcesium.qcesium_create_entity_fixed_geographic_coordinates, {viewer: globalThis.app_viewer});
-        // _connect(channel.objects.remote, qtcesium.qcesium_create_entity_satellite, {viewer: globalThis.app_viewer});
     });
 }
