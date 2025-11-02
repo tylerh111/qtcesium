@@ -5,6 +5,7 @@
         <file alias="/index.css">resources/qtcesium/index.css</file>
         <file alias="/index.html">resources/qtcesium/index.html</file>
         <file alias="/qcesium_channel.js">resources/qtcesium/qcesium_channel.js</file>
+        <file alias="/qcesium_czml.js">resources/qtcesium/qcesium_czml.js</file>
         <file alias="/qcesium_debug.js">resources/qtcesium/qcesium_debug.js</file>
         <file alias="/qcesium_init.js">resources/qtcesium/qcesium_init.js</file>
         <file alias="/qcesium_viewer.js">resources/qtcesium/qcesium_viewer.js</file>

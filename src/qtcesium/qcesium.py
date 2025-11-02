@@ -32,6 +32,9 @@ class QCesiumRemote(QtCore.QObject):
     qcesium_run_debug = QtCore.Signal(dict)
     """Signal javascript to run debug code."""
 
+    qcesium_load_czml = QtCore.Signal(list)
+    """Signal javascript to load a czml object."""
+
 
 class QCesium(QtWebEngineWidgets.QWebEngineView):
     """A Qt widget for Cesium.

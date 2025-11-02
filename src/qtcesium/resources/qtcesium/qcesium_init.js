@@ -29,5 +29,6 @@ export function initialize(container) {
         globalThis.app_remote = channel.objects.remote;
 
         _connect(channel.objects.remote, qtcesium.qcesium_run_debug, {viewer: globalThis.app_viewer});
+        _connect(channel.objects.remote, qtcesium.qcesium_load_czml, {viewer: globalThis.app_viewer});
     });
 }

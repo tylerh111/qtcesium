@@ -42,9 +42,10 @@ class _DemoDebugger(QtWidgets.QDialog):
 
     def _on_test(self, _):
         self._debug_message()
-        print(type(self.ui.cesium.remote.qcesium_run_debug))
-        print(dir(self.ui.cesium.remote.qcesium_run_debug))
-        self.ui.cesium.remote.qcesium_run_debug.emit({"id":"what"})
+        import json
+        with open("examples/simple.czml") as f:
+            czml = json.load(f)
+        self.ui.cesium.remote.qcesium_load_czml.emit(czml)
         self._debug_message("(done)")
 
 
@@ -66,7 +67,7 @@ def _setup_environment():
 
     os.environ["QTWEBENGINE_DICTIONARIES_PATH"] = "/usr/share/hunspell"
     os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = "--ignore-gpu-blocklist"
-    # os.environ["QTWEBENGINE_REMOTE_DEBUGGING"] = "5544"
+    os.environ["QTWEBENGINE_REMOTE_DEBUGGING"] = "5544"
 
 
 def _compile_resource_files(
@@ -74,23 +75,37 @@ def _compile_resource_files(
     *,
     force: bool = False,
 ):
-    for file in files:
-        file_compiled = file.with_suffix(".rcc")
-        if force or not file_compiled.exists():
-            print(f"compiling '{file}'")
-            subprocess.run([
-                "pyside6-rcc",
-                "--binary",
-                file,
-                "--output",
-                file_compiled,
-            ])
-            print(f"compiling '{file}' (done)")
+    import importlib.resources
+    root = importlib.resources.files("qtcesium")
+    file = root / "resource.qcesium.qrc"
+    file_compiled = file.with_suffix(".rcc")
+    print(f"compiling '{file}'")
+    subprocess.run([
+        "pyside6-rcc",
+        "--binary",
+        file,
+        "--output",
+        file_compiled,
+    ])
+    print(f"compiling '{file}' (done)")
+
+    # for file in files:
+    #     file_compiled = file.with_suffix(".rcc")
+    #     if force or not file_compiled.exists():
+    #         print(f"compiling '{file}'")
+    #         subprocess.run([
+    #             "pyside6-rcc",
+    #             "--binary",
+    #             file,
+    #             "--output",
+    #             file_compiled,
+    #         ])
+    #         print(f"compiling '{file}' (done)")
 
 
 def demo():
     _setup_environment()
-    _compile_resource_files(QTCESIUM_RESOURCE_FILES, force=True)
+    _compile_resource_files(QTCESIUM_RESOURCE_FILES, force=False)
 
     app = QtWidgets.QApplication(sys.argv)
     app.setApplicationName("DEMO")
