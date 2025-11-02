@@ -32,33 +32,6 @@ class QCesiumRemote(QtCore.QObject):
     qcesium_run_debug = QtCore.Signal(dict)
     """Signal javascript to run debug code."""
 
-    qcesium_create_entity = QtCore.Signal(dict)
-    """Signal javascript to create an entity.
-
-    Args:
-        ** (dict): See `Cesium.Entity.ConstructorOptions`.
-    """
-
-    qcesium_create_entity_fixed_geographic_coordinates = QtCore.Signal(dict)
-    """Signal javascript to create a fixed geographic coordinate entity.
-
-    Args:
-        id (str): Identifier for entity.
-        lat (float): Latitude of geographic coordinate.
-        lon (float): Longitude of geographic coordinate.
-        alt (float): Altitude of geographic coordinate. Defaults to `0.0`.
-        label (str): Label for geographic coordinate. Defaults to `None`.
-    """
-
-    qcesium_create_entity_satellite = QtCore.Signal(dict)
-    """Signal javascript to create a satellite entity.
-
-    Args:
-        id (str): Identifier for entity.
-        omm (float): Obital information for satellite in Orbital Mean-Element Message (OMM) format.
-        label (str): Label for satellite entity. Defaults to `None`.
-    """
-
 
 class QCesium(QtWebEngineWidgets.QWebEngineView):
     """A Qt widget for Cesium.

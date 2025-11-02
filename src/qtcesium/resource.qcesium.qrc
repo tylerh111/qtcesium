@@ -6,7 +6,6 @@
         <file alias="/index.html">resources/qtcesium/index.html</file>
         <file alias="/qcesium_channel.js">resources/qtcesium/qcesium_channel.js</file>
         <file alias="/qcesium_debug.js">resources/qtcesium/qcesium_debug.js</file>
-        <file alias="/qcesium_entity.js">resources/qtcesium/qcesium_entity.js</file>
         <file alias="/qcesium_init.js">resources/qtcesium/qcesium_init.js</file>
         <file alias="/qcesium_viewer.js">resources/qtcesium/qcesium_viewer.js</file>
     </qresource>

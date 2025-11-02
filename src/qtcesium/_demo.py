@@ -37,10 +37,6 @@ class _DemoDebugger(QtWidgets.QDialog):
         self._button_test.clicked.connect(self._on_test)
         self._layout.addWidget(self._button_test)
 
-        self._button_entity = QtWidgets.QPushButton("entity")
-        self._button_entity.clicked.connect(self._on_entity)
-        self._layout.addWidget(self._button_entity)
-
     def _debug_message(self, msg: str = ""):
         QtCore.qDebug(f"::DEBUGGER:: <{inspect.stack()[1][3]}> {msg}")
 
@@ -49,23 +45,6 @@ class _DemoDebugger(QtWidgets.QDialog):
         print(type(self.ui.cesium.remote.qcesium_run_debug))
         print(dir(self.ui.cesium.remote.qcesium_run_debug))
         self.ui.cesium.remote.qcesium_run_debug.emit({"id":"what"})
-        self._debug_message("(done)")
-
-    def _on_entity(self, _):
-        self.p = getattr(self, "p", 0)
-        self.p += 1
-        self._debug_message()
-        self.ui.cesium.remote.qcesium_create_entity_fixed_geographic_coordinates.emit({
-            "id": "hello",
-            "lat": 0,
-            "lon": 0,
-        })
-        self.ui.cesium.remote.qcesium_create_entity_fixed_geographic_coordinates.emit({
-            "id": "test",
-            "lat": 40.812305,
-            "lon": -77.856176,
-            "label": "state college",
-        })
         self._debug_message("(done)")
 
 
