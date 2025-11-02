@@ -16,7 +16,7 @@ export function create_cesium_viewer(container) {
     viewer.scene.globe.enableLighting = true;
     viewer.scene.debugShowFramesPerSecond = true;
 
-    viewer.extend(Cesium.viewerReferenceFrameMixin);
+    // viewer.extend(Cesium.viewerReferenceFrameMixin);
     viewer.referenceFrame = Cesium.ReferenceFrame.FIXED;
 
     return viewer;
